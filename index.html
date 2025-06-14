@@ -1,85 +1,185 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>らるもけ | プロファイル</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>らるもけ | Profile</title>
+  <link rel="icon" href="https://rarumoke-official.github.io/IMG_4389.png" type="image/png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
-  body {
-    background: #0a0a0a;
-    color: #00ffff;
-    font-family: 'Share Tech Mono', monospace;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 2px solid #00ffff;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #00ffff;
-    text-align: center;
-  }
+    body {
+      background: #0a0a0a;
+      color: #00ffff;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+      overflow: hidden;
+    }
 
-  h1 {
-    color: #8affff;
-    text-shadow: 0 0 5px #00ffff;
-    margin-bottom: 20px;
-  }
+    h1 {
+      text-shadow: 0 0 8px #00ffff;
+      font-size: 2.5rem;
+    }
 
-  img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 3px solid #00ffff;
-    box-shadow: 0 0 10px #00ffff;
-    margin-bottom: 20px;
-    object-fit: cover;
-  }
+    #icon {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 10px #00ffff;
+      margin: 20px 0;
+      object-fit: cover;
+    }
 
-  p.intro {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    line-height: 1.5;
-  }
+    #time {
+      margin: 10px 0 20px;
+      font-size: 1rem;
+      color: #8affff;
+    }
 
-  a {
-    display: inline-block;
-    margin: 10px 15px;
-    padding: 10px 18px;
-    color: #0a0a0a;
-    background: #00ffff;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 0 10px #00ffff;
-    transition: background 0.3s ease;
-  }
+    #intro {
+      white-space: pre-line;
+      font-size: 1.1rem;
+      margin: 20px auto;
+      line-height: 1.5;
+      min-height: 4em;
+    }
 
-  a:hover {
-    background: #00cccc;
-  }
-</style>
+    .link-group a {
+      display: inline-block;
+      margin: 10px 10px;
+      padding: 10px 18px;
+      color: #0a0a0a;
+      background: #00ffff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ffff;
+      transition: background 0.3s ease;
+    }
+
+    .link-group a:hover {
+      background: #00cccc;
+    }
+
+    #quoteBox {
+      margin-top: 30px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #8affff;
+      min-height: 2em;
+    }
+
+    #quoteBtn {
+      margin-top: 15px;
+      padding: 8px 16px;
+      font-size: 1rem;
+      background-color: #00ffff;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 8px #00ffff;
+    }
+
+    #quoteBtn:hover {
+      background-color: #00cccc;
+    }
+
+    /* カスタムマウスエフェクト */
+    .trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #00ffff;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.8;
+      z-index: 9999;
+      animation: fadeOut 0.8s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        transform: scale(0.2);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>らるもけ</h1>
+  <h1>らるもけ</h1>
+  <img id="icon" src="https://rarumoke-official.github.io/IMG_4389.png" alt="アイコン" />
 
-<img src="https://rarumoke-official.github.io/IMG_4389.png" alt="らるもけのアイコン" />
+  <div id="time">時刻読み込み中...</div>
 
-<p class="intro">
-🌟SNSで輝きたい中学2年生！<br>
-👤13y | He/His | INFP<br>
-💻Minecrafter / Bot Programmer<br>
-🔧Developer / Gamer<br>
-📎Discord：rrmk_main2<br>
-🎉Birthday：9/22
-</p>
+  <p id="intro"></p>
 
-<div>
-  <a href="https://discord.gg/jXmUarG59z" target="_blank" rel="noopener noreferrer">夜煌鯖(Main Discord)</a>
-  <a href="https://discord.gg/uG2vSBTfBn" target="_blank" rel="noopener noreferrer">ギルドタグ“あばでこ“</a>
-  <a href="https://x.com/rarumoke" target="_blank" rel="noopener noreferrer">X（旧Twitter）</a>
-</div>
+  <div class="link-group">
+    <a href="https://discord.gg/jXmUarG59z" target="_blank">夜煌鯖(Main)</a>
+    <a href="https://discord.gg/uG2vSBTfBn" target="_blank">あばでこ(Sub)</a>
+    <a href="https://x.com/rarumoke" target="_blank">X（旧Twitter）</a>
+  </div>
 
+  <div>
+    <button id="quoteBtn">🎲 名言(笑)ガチャ</button>
+    <p id="quoteBox"></p>
+  </div>
+
+  <script>
+    // 現在時刻の表示
+    function updateTime() {
+      const now = new Date();
+      const formatted = now.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
+      document.getElementById("time").textContent = `現在時刻：${formatted}`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    // タイプ風自己紹介
+    const introText = `🌟SNSで輝きたい中学2年生！
+👤13y | He/His | INFP
+💻Minecrafter / Bot Programmer
+🔧Developer / Gamer
+📎Discord：rrmk_main2
+🎉Birthday：9/22`;
+
+    const introEl = document.getElementById("intro");
+    let i = 0;
+    function typeIntro() {
+      if (i < introText.length) {
+        introEl.textContent += introText.charAt(i);
+        i++;
+        setTimeout(typeIntro, 50);
+      }
+    }
+    typeIntro();
+
+    // 名言ガチャ
+    const quotes = [
+      "らるもけはハゲ",
+      "えどらるはゲイ",
+      "uirusunikiとrecは相思相愛"
+    ];
+    document.getElementById("quoteBtn").addEventListener("click", () => {
+      const rand = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quoteBox").textContent = quotes[rand];
+    });
+
+    // マウストレイル
+    document.addEventListener("mousemove", (e) => {
+      const trail = document.createElement("div");
+      trail.className = "trail";
+      trail.style.left = e.pageX + "px";
+      trail.style.top = e.pageY + "px";
+      document.body.appendChild(trail);
+      setTimeout(() => {
+        trail.remove();
+      }, 800);
+    });
+  </script>
 </body>
 </html>
