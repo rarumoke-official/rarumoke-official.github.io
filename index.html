@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>らるもけ | ProFile</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #f0f2f5;
+    color: #333;
+  }
+  label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: bold;
+  }
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  textarea {
+    resize: vertical;
+  }
+  input[type="url"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  input[type="file"] {
+    margin-top: 6px;
+  }
+  #preview {
+    margin-top: 30px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+  }
+  #preview img {
+    max-width: 150px;
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 15px;
+  }
+  #preview a {
+    color: #0366d6;
+    text-decoration: none;
+  }
+  #preview a:hover {
+    text-decoration: underline;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #5865f2; /* Discord色にちょい寄せ */
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #4752c4;
+  }
+</style>
+</head>
+<body>
+
+<h1>自己紹介作成</h1>
+
+<label for="intro">自己紹介</label>
+<textarea id="intro" rows="4" placeholder"SNSで輝きたい中学2年生！"></textarea>
+
+<label for="mainDiscord">夜煌鯖(Main)</label>
+<input type="url" id="mainDiscord" placeholder="https://discord.gg/jXmUarG59z" />
+
+<label for="subDiscord">タグ鯖“あばでこ(Sub)“</label>
+<input type="url" id="subDiscord" placeholder="https://discord.gg/uG2vSBTfBn" />
+
+<label for="xUrl">X（旧Twitter）URL</label>
+<input type="url" id="xUrl" placeholder="https://x.com/rarumoke" />
+
+<label for="iconInput">アイコン画像を選択</label>
+<input type="file" id="iconInput" accept="image/*" />
+
+<button id="showBtn">プレビュー表示</button>
+
+<div id="preview" style="display:none;">
+  <h2>プレビュー</h2>
+  <img id="previewIcon" src="" alt="アイコン" />
+  <p id="previewIntro"></p>
+  <p>Discordメイン鯖：<a id="previewMainDiscord" href="" target="_blank" rel="noopener noreferrer"></a></p>
+  <p>Discordサブ鯖：<a id="previewSubDiscord" href="" target="_blank" rel="noopener noreferrer"></a></p>
+  <p>X：<a id="previewXUrl" href="" target="_blank" rel="noopener noreferrer"></a></p>
+</div>
+
+<script>
+  const intro = document.getElementById('intro');
+  const mainDiscord = document.getElementById('mainDiscord');
+  const subDiscord = document.getElementById('subDiscord');
+  const xUrl = document.getElementById('xUrl');
+  const iconInput = document.getElementById('iconInput');
+  const showBtn = document.getElementById('showBtn');
+
+  const preview = document.getElementById('preview');
+  const previewIcon = document.getElementById('previewIcon');
+  const previewIntro = document.getElementById('previewIntro');
+  const previewMainDiscord = document.getElementById('previewMainDiscord');
+  const previewSubDiscord = document.getElementById('previewSubDiscord');
+  const previewXUrl = document.getElementById('previewXUrl');
+
+  showBtn.addEventListener('click', () => {
+    previewIntro.textContent = intro.value || '自己紹介がありません。';
+    
+    if (mainDiscord.value) {
+      previewMainDiscord.textContent = mainDiscord.value;
+      previewMainDiscord.href = mainDiscord.value;
+    } else {
+      previewMainDiscord.textContent = '未設定';
+      previewMainDiscord.href = '#';
+    }
+
+    if (subDiscord.value) {
+      previewSubDiscord.textContent = subDiscord.value;
+      previewSubDiscord.href = subDiscord.value;
+    } else {
+      previewSubDiscord.textContent = '未設定';
+      previewSubDiscord.href = '#';
+    }
+
+    if (xUrl.value) {
+      previewXUrl.textContent = xUrl.value;
+      previewXUrl.href = xUrl.value;
+    } else {
+      previewXUrl.textContent = '未設定';
+      previewXUrl.href = '#';
+    }
+
+    // アイコン画像をプレビュー表示
+    if (iconInput.files && iconInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        previewIcon.src = e.target.result;
+      };
+      reader.readAsDataURL(iconInput.files[0]);
+    } else {
+      previewIcon.src = '';
+      previewIcon.alt = 'アイコンが選択されていません';
+    }
+
+    preview.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
