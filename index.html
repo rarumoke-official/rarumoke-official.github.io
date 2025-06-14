@@ -33,12 +33,6 @@
       object-fit: cover;
     }
 
-    #time {
-      margin: 10px 0 20px;
-      font-size: 1rem;
-      color: #8affff;
-    }
-
     #intro {
       white-space: pre-line;
       font-size: 1.1rem;
@@ -113,7 +107,6 @@
 
   <h1>らるもけ</h1>
   <img id="icon" src="https://rarumoke-official.github.io/IMG_4389.png" alt="アイコン" />
-  <div id="time">時刻読み込み中...</div>
 
   <p id="intro"></p>
 
@@ -129,15 +122,6 @@
   </div>
 
   <script>
-    // 現在時刻の表示
-    function updateTime() {
-      const now = new Date();
-      const formatted = now.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
-      document.getElementById("time").textContent = `現在時刻：${formatted}`;
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
-
     // タイプ風自己紹介
     const introText = `🌟SNSで輝きたい中学2年生！
 👤13y | He/His | INFP
